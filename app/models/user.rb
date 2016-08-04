@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :auth_token, uniqueness: true
   before_create :generate_authentication_token!
+  has_many :restaurant_reviews
+  alias_attribute :reviews, :restaurant_reviews
 
   def generate_authentication_token!
     begin
