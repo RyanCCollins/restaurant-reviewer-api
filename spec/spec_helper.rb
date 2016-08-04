@@ -18,12 +18,13 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require_relative './support/request_helpers.rb'
+require 'devise'
 
 RSpec.configure do |config|
   # Include the request helpers automatically
   config.include Request::JsonHelpers, type: :controller
-  config.include Request::HeadersHelpers, :type => :controller
-
+  config.include Request::HeadersHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :controller
   config.before(:each, type: :controller) do
     include_default_accept_headers
   end
