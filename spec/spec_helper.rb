@@ -16,7 +16,17 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require_relative './support/request_helpers.rb'
+
 RSpec.configure do |config|
+  # Include the request helpers automatically
+  config.include Request::JsonHelpers, type: :controller
+  config.include Request::HeadersHelpers, :type => :controller
+
+  config.before(:each, type: :controller) do
+    include_default_accept_headers
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
