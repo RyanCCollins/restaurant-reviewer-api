@@ -1,9 +1,14 @@
 class Api::V1::ReviewsController < ApplicationController
-  before_action :authenticate_with_token!
 
   respond_to :json
+
+  def index
+    @reviews = Review.where(restaurant_id: params[:restaurant_id])
+    respond_with @review, serializer: ReviewsSerializer
+  end
+
   def create
-    review = current_user.reviews.build(review_params)
+    review = Review.new(review_params)
     if review.save
       render json: review, status: 201, location: [:api_v1, review]
     else
@@ -29,6 +34,9 @@ class Api::V1::ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:total_stars, :text, :restaurant_id)
+      params.require(:review).permit(:total_stars,
+                                     :text,
+                                     :restaurant_id,
+                                     :person)
     end
 end

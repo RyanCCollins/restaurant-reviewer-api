@@ -3,11 +3,11 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    render json: {restaurant: @restaurant}
+    respond_with @restaurant, serializer: RestaurantsSerializer
   end
 
   def index
     @restaurants = Restaurant.all
-    render json: {restaurants: @restaurants}
+    respond_with @restaurants, serializer: RestaurantsSerializer
   end
 end
