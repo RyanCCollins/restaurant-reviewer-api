@@ -2,10 +2,12 @@ class Api::V1::RestaurantsController < ApplicationController
   respond_to :json
 
   def show
-    respond_with Donation.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
+    render json: {restaurant: @restaurant}
   end
 
   def index
-    respond_with Restaurant.all
+    @restaurants = Restaurant.all
+    render json: {restaurants: @restaurants}
   end
 end
