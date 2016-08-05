@@ -8,6 +8,11 @@ class Api::V1::RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-    respond_with @restaurants, serializer: RestaurantsSerializer
+    render json: {
+      restaurants: ActiveModel::Serializer::CollectionSerializer.new(
+        @restaurants,
+        each_serializer: RestaurantSerializer,
+        root: false)
+    }
   end
 end

@@ -4,7 +4,15 @@ class Api::V1::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.where(restaurant_id: params[:restaurant_id])
-    respond_with @review, serializer: ReviewsSerializer
+    render json: {
+      reviews: ActiveModel::Serializer::CollectionSerializer.new(@reviews,
+      each_serializer: ReviewSerializer, root: false)
+    }
+  end
+
+  def show
+    @review = Review.find_by(id: params[:review_id])
+    respond_with @review, serializer: ReviewSerializer
   end
 
   def create
