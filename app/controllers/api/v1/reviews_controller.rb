@@ -19,7 +19,8 @@ class Api::V1::ReviewsController < ApplicationController
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.build(review_params)
     if @review.save
-      respond_with @review, serializer: ReviewSerializer, location: :api_v1_restaurant_reviews
+      respond_with @review, serializer: ReviewSerializer,
+                              location: :api_v1_restaurant_reviews
     else
       render json: { errors: review.errors }, status: 422
     end
