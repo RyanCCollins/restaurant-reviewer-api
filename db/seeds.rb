@@ -214,7 +214,7 @@ restaurants = Restaurant.all
 restaurants.each do |r|
   10.times do
     r.reviews << Review.create({
-      total_stars: [1..5].sample,
+      total_stars: (1..5).to_a.sample,
       text: FFaker::CheesyLingo.sentence,
       person: people.sample
     })
