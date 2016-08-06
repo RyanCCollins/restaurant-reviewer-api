@@ -195,3 +195,28 @@ Restaurant.create([
     feature_image: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurants/earlofsandwich.jpg?raw=true'
   }
 ])
+
+Person.create([
+  {
+    name: 'Ryan Collins'
+  },
+  {
+    name: FFaker::Name.name
+  },
+  {
+    name: FFaker::Name.name
+  }
+])
+
+people = Person.all
+restaurants = Restaurant.all
+
+restaurants.each do |r|
+  10.times do
+    r.reviews << Review.create({
+      total_stars: [1..5].sample,
+      text: FFaker::CheesyLingo.sentence,
+      person: people.sample
+    })
+  end
+end
