@@ -16,9 +16,10 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new(review_params)
-    if review.save
-      render json: review, status: 201, location: [:api_v1, review]
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = @restaurant.reviews.build(review_params)
+    if @review.save
+      respond_with @review, serializer: ReviewSerializer, location: :api_v1_restaurant_reviews
     else
       render json: { errors: review.errors }, status: 422
     end
@@ -33,7 +34,7 @@ class Api::V1::ReviewsController < ApplicationController
   def update
     review = current_user.reviews.find(params[:id])
     if review.update(review_params)
-      render json: review, status: 200, location: [:api_v1, review]
+      render json: review, status: 200, location: [:api, review]
     else
       render json: { errors: review.errors }, status: 422
     end
@@ -45,6 +46,6 @@ class Api::V1::ReviewsController < ApplicationController
       params.require(:review).permit(:total_stars,
                                      :text,
                                      :restaurant_id,
-                                     :person)
+                                     person_attributes: [:name])
     end
 end

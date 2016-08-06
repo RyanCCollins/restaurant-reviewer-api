@@ -1,4 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
+  type "review"
   attributes :id, :total_stars, :text, :person, :date
   belongs_to :person
   # Format the date into MM/DD/YYYY Format
@@ -14,7 +15,11 @@ class ReviewSerializer < ActiveModel::Serializer
   end
 
   def person
-    object.person.name || 'Unknown Person'
+    if object.person && object.person.name
+      object.person.name
+    else
+      'Unknown Person'
+    end
   end
 
 end
