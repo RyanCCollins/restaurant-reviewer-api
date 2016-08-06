@@ -1,5 +1,5 @@
 class ReviewSerializer < ActiveModel::Serializer
-  type "review"
+  type 'review'
   attributes :id, :total_stars, :text, :person, :date
   belongs_to :person
   # Format the date into MM/DD/YYYY Format

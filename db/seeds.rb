@@ -19,6 +19,9 @@ RestaurantType.create([
     name: 'Other'
   },
   {
+    name: 'Farmers Market'
+  },
+  {
     name: 'Barbeque'
   }
 ])
@@ -87,16 +90,28 @@ Restaurant.create([
     feature_image: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurants/dinosaur.jpg?raw=true'
   },
   {
-    name: 'HopDoddy',
-    address: '1400 S Congress Ave',
-    type: types.where(name: 'Burgers').first,
-    town: 'Austin',
-    state: 'TX',
-    zip: '78704',
+    name: 'Shady Maple Smorgasbord',
+    address: '129 Toddy Dr',
+    type: types.where(name: 'Farmers Market').first,
+    town: 'East Earl',
+    state: 'PA',
+    zip: '17519',
     country: 'US',
-    phone: '(512) 243-7505',
-    website: 'http://www.hopdoddy.com/',
-    feature_image: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurants/hopdoddy.jpg?raw=true'
+    phone: '(717) 354-8222',
+    website: 'http://www.shady-maple.com/',
+    feature_image: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurants/shadymaple.jpg?raw=true'
+  },
+  {
+    name: 'The Ledbury',
+    address: '127 Ledbury Rd',
+    type: types.where(name: 'Other').first,
+    town: 'Notting Hill',
+    state: 'London',
+    zip: 'W11 2AQ',
+    country: 'GB',
+    phone: '020 7792 9090',
+    website: 'http://www.theledbury.com/',
+    feature_image: 'https://github.com/RyanCCollins/cdn/blob/master/restaurant-reviewer/restaurants/ledbury.jpg?raw=true'
   },
   {
     name: 'Hill Country',
