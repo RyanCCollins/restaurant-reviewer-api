@@ -247,10 +247,10 @@ restaurants.each do |r|
     })
   end
 
-  weekday_hours = "#{hours_from.sample} - #{hour_to.sample}"
-  weekend_hours = "#{hours_from.sample} - #{hour_to.sample}"
+  weekday_hours = "#{hours_from.sample} - #{hours_to.sample}"
+  weekend_hours = "#{hours_from.sample} - #{hours_to.sample}"
 
-  r.review.hours = RestaurantHour.create({
+  r.hours = RestaurantHour.create({
     monday: weekday_hours,
     tuesday: weekday_hours,
     wednesday: weekday_hours,
