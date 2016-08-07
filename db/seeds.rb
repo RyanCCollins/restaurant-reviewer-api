@@ -225,6 +225,18 @@ Person.create([
 
 people = Person.all
 restaurants = Restaurant.all
+hours_from = [
+  '9:00',
+  '10:00',
+  '11:00',
+  '12:00'
+]
+hours_to = [
+  '20:00',
+  '21:00',
+  '22:00',
+  '23:00'
+]
 
 restaurants.each do |r|
   10.times do
@@ -234,4 +246,17 @@ restaurants.each do |r|
       person: people.sample
     })
   end
+
+  weekday_hours = "#{hours_from.sample} - #{hour_to.sample}"
+  weekend_hours = "#{hours_from.sample} - #{hour_to.sample}"
+
+  r.review.hours = RestaurantHour.create({
+    monday: weekday_hours,
+    tuesday: weekday_hours,
+    wednesday: weekday_hours,
+    thursday: weekday_hours,
+    friday: weekday_hours,
+    saturday: weekend_hours,
+    sunday: weekend_hours
+  })
 end
