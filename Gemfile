@@ -6,12 +6,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'devise'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'ffaker'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-  gem 'ffaker'
   gem 'shoulda-matchers'
   gem 'sqlite3'
 end
