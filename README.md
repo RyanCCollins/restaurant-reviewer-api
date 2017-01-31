@@ -8,6 +8,7 @@ A restaurant review application with a focus on accessibility. Accesses JSON fil
 ## About
 This project is the api / backend only for the project and serves and persists JSON data to the front end application via a RESTful API.
 
+
 ### Installing
 
 To install the dependencies, run
